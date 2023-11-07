@@ -11,14 +11,28 @@
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cffc7630ac0e57700628f683d9b15751"></script>
 <script>
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-    mapOption = { 
+var mapContainer = document.getElementById('map'); // 지도를 표시할 div 
+var mapOption = { 
         center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
         level: 3 // 지도의 확대 레벨
     };
+    
 
 // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
 var map = new kakao.maps.Map(mapContainer, mapOption); 
+var makerPosition = new kakao.maps.Lating(33.450701, 126.570667);
+//마커
+var marker = new kakao.map.Marker({
+    position:markerPosition
+});
+function setCenter(lat,lng)
+{
+    marker.setMep(null)// 마커지움
+    var mp = new kakao.maps.Latlng(lat,lng);//맵과 마커의 위치
+    map.setCanter(mp)//맵의 센터 위치 조정
+    marker = new kakao.maps.Marker({position:mp});//마커를 다시 만들기
+    marker.setMap(map);//마커그림
+}
 </script>
 </body>
 </html>
